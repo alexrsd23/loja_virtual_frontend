@@ -3,22 +3,35 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { FormsModule } from '@angular/forms';
+import { LoginModule } from './features/v1/login/login.module';
+import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from './shared/material/material.module';
+import { JwtInterceptor } from './core/guards/interceptors/jwt.interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ForbidenComponent } from './features/v1/forbiden/components/forbiden.component';
+import { HomeComponent } from './features/v1/home/components/home.component';
+import { HomeModule } from './features/v1/home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    LoginComponent
+    ForbidenComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule 
+    ReactiveFormsModule,
+    RouterModule,
+    HttpClientModule,
+    MaterialModule,
+    LoginModule,
+    HomeModule,
+    BrowserAnimationsModule
+],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,14 +1,39 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
+import { RouteReuseStrategy, RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './features/v1/login/components/login.component';
+import { LoginModule } from './features/v1/login/login.module';
+import { AutenticacaoGuard } from './core/guards/autenticacao.guard';
+import { HomeComponent } from './features/v1/home/components/home.component';
+import { ForbidenComponent } from './features/v1/forbiden/components/forbiden.component';
+import { CustomReuseStrategy } from './shared/CustomReuseStrategy';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
+    canActivate: [AutenticacaoGuard],
+    data: { roles: ['ROLE_ADMIN', 'ROLE_USER'] },
+  },
+  { path: 'login', 
+    component: LoginComponent 
+  },
+  {
+    path: 'forbidden',
+    component: ForbidenComponent,
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'}),
+    LoginModule],
+    providers: [
+      {provide: RouteReuseStrategy, useClass: CustomReuseStrategy}
+    ],
+    exports: [RouterModule],
+  })
 export class AppRoutingModule { }

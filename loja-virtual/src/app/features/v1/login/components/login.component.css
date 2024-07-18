@@ -134,3 +134,24 @@ p a {
   width: 40px;
   height: 40px;
 }
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  padding-right: 2rem; /* Espaço para o ícone do olho */
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
+.fa-eye,
+.fa-eye-slash {
+  font-size: .8rem;
+}
