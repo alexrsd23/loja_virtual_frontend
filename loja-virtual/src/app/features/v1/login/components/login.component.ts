@@ -11,8 +11,12 @@ import { LoginService } from 'src/app/core/guards/services/login.service';
 })
 export class LoginComponent implements OnInit {
   login!: FormGroup;
-  passwordFieldType: string = 'password'; // Tipo do campo de senha
-  passwordIconClass: string = 'fa-eye'; // Classe do ícone de olho
+  passwordFieldType: string = 'password';
+  passwordIconClass: string = 'fa-eye';
+  greetingMessage: string = '';
+  backgroundClass: string = '';
+  stars: { top: number, left: number }[] = [];
+  starsBig: { top: number, left: number }[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,6 +26,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.setGreetingMessageAndBackground();
     this.login = this.formBuilder.group({
       login: [
         '',
@@ -36,6 +41,44 @@ export class LoginComponent implements OnInit {
         [Validators.required]
       ]
     });
+    if (this.backgroundClass === 'noite-background') {
+      this.generateRandomStars(50);
+      this.generateRandomStarsBig(20); // Define o número de estrelas
+    }
+  }
+
+  generateRandomStars(count: number) {
+    for (let i = 0; i < count; i++) {
+      const top = Math.random() * 4000;
+      const left = Math.random() * 20000;
+      this.stars.push({ top, left });
+    }
+  }
+
+  generateRandomStarsBig(count: number) {
+    for (let i = 0; i < count; i++) {
+      const top = Math.random() * 1000;
+      const left = Math.random()*2 * 4000;
+      this.starsBig.push({ top, left });
+    }
+  }
+
+  setGreetingMessageAndBackground(): void {
+    const currentHour = new Date().getHours();
+
+    if (currentHour >= 0 && currentHour < 5) {
+      this.greetingMessage = 'Boa madrugada';
+      this.backgroundClass = 'madrugada-background';
+    } else if (currentHour >= 5 && currentHour < 12) {
+      this.greetingMessage = 'Bom dia';
+      this.backgroundClass = 'manha-background';
+    } else if (currentHour >= 12 && currentHour < 18) {
+      this.greetingMessage = 'Boa tarde';
+      this.backgroundClass = 'tarde-background';
+    } else {
+      this.greetingMessage = 'Boa noite';
+      this.backgroundClass = 'noite-background';
+    }
   }
 
   logar(): void {

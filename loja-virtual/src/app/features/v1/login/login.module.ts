@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { SvgModule } from '../svg/svg.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
+    SvgModule,
     RouterModule
   ],
   exports: [

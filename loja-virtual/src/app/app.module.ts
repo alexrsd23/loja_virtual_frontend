@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForbidenComponent } from './features/v1/forbiden/components/forbiden.component';
 import { HomeComponent } from './features/v1/home/components/home.component';
 import { HomeModule } from './features/v1/home/home.module';
+import { CloudSvgComponent } from './features/v1/svg/cloud-svg/cloud-svg.component';
 
 @NgModule({
   declarations: [

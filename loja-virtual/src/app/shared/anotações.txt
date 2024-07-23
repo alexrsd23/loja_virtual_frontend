@@ -1,0 +1,61 @@
+(function() {
+  // Função para simular a mudança de horário
+  function simulateTime(hour) {
+    const greetingMessage = document.querySelector('.login-container h1');
+    const leftPanel = document.querySelector('.left-panel');
+    
+    if (!greetingMessage || !leftPanel) return;
+
+    let message = '';
+    let backgroundClass = '';
+
+    if (hour >= 0 && hour < 5) {
+      message = 'Boa madrugada';
+      backgroundClass = 'madrugada-background';
+    let madrugada = '';
+    } else if (hour >= 5 && hour < 12) {
+      message = 'Bom dia';
+      backgroundClass = 'manha-background';
+    } else if (hour >= 12 && hour < 18) {
+      message = 'Boa tarde';
+      backgroundClass = 'tarde-background';
+    } else {
+      message = 'Boa noite';
+      backgroundClass = 'noite-background';
+    }
+
+    // Atualizar a mensagem de saudação
+    greetingMessage.textContent = message;
+
+    // Atualizar a classe de fundo
+    leftPanel.className = `left-panel ${backgroundClass}`;
+  }
+
+  // Criar e adicionar o botão
+  let button = document.createElement("button");
+  button.innerHTML = "Trocar Horário";
+  button.style.position = 'fixed';
+  button.style.bottom = '20px';
+  button.style.right = '20px';
+  button.style.padding = '10px 20px';
+  button.style.fontSize = '16px';
+  button.style.cursor = 'pointer';
+  button.style.zIndex = '1000';
+  button.style.backgroundColor = '#007bff';
+  button.style.color = 'white';
+  button.style.border = 'none';
+  button.style.borderRadius = '5px';
+  
+  // Adicionar o botão ao corpo da página
+  document.body.appendChild(button);
+
+  // Lista de horários simulados
+  const hours = [3, 6, 13, 18];
+  let index = 0;
+
+  // Função a ser executada quando o botão for clicado
+  button.onclick = () => {
+    simulateTime(hours[index]);
+    index = (index + 1) % hours.length; // Atualizar o índice e reiniciar se necessário
+  };
+})();

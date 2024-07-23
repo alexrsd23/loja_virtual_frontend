@@ -1,7 +1,48 @@
 <div class="login-page">
   <div class="login-container">
-    <div class="left-panel">
-      <img src="assets/login-illustration.png" alt="Login Illustration">
+    <div [ngClass]="backgroundClass" class="left-panel">
+      <div class="full-size-child">
+        <div *ngIf="backgroundClass === 'madrugada-background'" class="madrugada">
+          <app-cloud-svg svgClass="nuvem-baixo-madrugada"></app-cloud-svg>
+          <app-cloud-svg svgClass="nuvem-meio-madrugada"></app-cloud-svg>
+          <app-cloud-svg svgClass="nuvem-alto-madrugada"></app-cloud-svg>
+        </div>
+        <div *ngIf="backgroundClass === 'manha-background'" class="manha">
+          <app-cloud-svg svgClass="nuvem-baixo-dia"></app-cloud-svg>
+          <app-cloud-svg svgClass="nuvem-meio-dia"></app-cloud-svg>
+          <app-cloud-svg svgClass="nuvem-alto-dia"></app-cloud-svg>
+          <app-cloud-svg svgClass="nuvem-inicio-dia"></app-cloud-svg>
+          <app-cloud-svg svgClass="nuvem-fim-dia-1"></app-cloud-svg>
+          <app-cloud-svg svgClass="nuvem-fim-dia-2"></app-cloud-svg>
+        </div>
+        <div *ngIf="backgroundClass === 'tarde-background'" class="tarde">
+          <app-circle-svg svgClass="sol-baixo-tarde"></app-circle-svg>
+          <app-circle-svg svgClass="sol-medio-tarde"></app-circle-svg>
+          <app-circle-svg svgClass="sol-alto-tarde"></app-circle-svg>
+          <app-cloud-svg svgClass="nuvem-inicio-tarde"></app-cloud-svg>
+          <app-cloud-svg svgClass="nuvem-fim-tarde"></app-cloud-svg>
+        </div>
+        <div *ngIf="backgroundClass === 'noite-background'" class="noite">
+          <app-circle-svg svgClass="lua-baixo-noite"></app-circle-svg>
+          <app-circle-svg svgClass="lua-medio-noite"></app-circle-svg>
+          <app-circle-svg svgClass="lua-alto-noite"></app-circle-svg>
+          <app-cloud-svg svgClass="nuvem-inicio-noite"></app-cloud-svg>
+          <app-cloud-svg svgClass="nuvem-fim-noite"></app-cloud-svg>
+          <div class="star-noite-pequena-container">
+            <ng-container *ngFor="let star of stars"><app-circle-svg svgClass="star-noite-pequena"
+                [ngStyle]="{'--star-top': star.top + '%', '--star-left': star.left + '%'}"></app-circle-svg></ng-container>
+
+          </div>
+          <div class="star-noite-grande-container">
+            <ng-container *ngFor="let starBig of starsBig">
+              <app-circle-svg svgClass="star-noite-grande"
+                [ngStyle]="{'--star-top': starBig.top + '%', '--star-left': starBig.left + '%'}"></app-circle-svg></ng-container>
+          </div>
+        </div>
+      </div>
+      <!-- <img src="assets/img/login-illustration.png" alt="Login Illustration"> -->
+      <h1>{{ greetingMessage }}</h1>
+      <p>Insira suas informações para começar a usar a nossa plataforma.</p>
     </div>
     <div class="right-panel">
       <h2>Entrar</h2>
@@ -19,7 +60,6 @@
             </span>
           </div>
         </div>
-        
         <div class="form-group">
           <div class="form-group-remember">
             <input type="checkbox" id="remember-me" name="remember-me">
