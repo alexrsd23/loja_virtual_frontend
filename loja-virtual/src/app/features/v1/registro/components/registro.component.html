@@ -1,0 +1,75 @@
+<div class="register-page">
+  <div class="registro-container">
+    <div class="left-panel">
+      <img src="assets/img/register-illustration.svg" alt="Register Illustration">
+    </div>
+    <div class="right-panel">
+      <h2>Criar uma conta!</h2>
+      <p>Insira suas informações para começar</p>
+      <form (ngSubmit)="registrar()" [formGroup]="registroForm">
+        <div class="form-group">
+          <div class="input-container">
+            <span class="icon"><i class="fa fa-user"></i></span>
+            <input type="text" id="login" formControlName="login" required placeholder="login">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-container">
+            <span class="icon"><i class="fa fa-envelope"></i></span>
+            <input type="text" id="email" formControlName="email" required placeholder="e-mail">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="password-container input-container">
+            <span class="icon"><i class="fa fa-lock"></i></span>
+            <input [type]="passwordFieldType" id="senha" formControlName="senha" placeholder="senha">
+            <span class="password-toggle" (click)="togglePasswordVisibility()">
+              <i class="fa" [ngClass]="passwordIconClass"></i>
+            </span>
+          </div>
+        </div>
+
+        <p id="aviso">Crie uma senha que:</p>
+        <ul>
+          <li class="validator-senha" [ngClass]="{'info': !isPasswordValid(1), 'check': isPasswordValid(1)}">
+            <span class="icon">
+              <i class="fa" [ngClass]="isPasswordValid(1) ? 'fa-check' : 'fa-info'"></i>
+            </span>Tenha no mínimo 10 caracteres
+          </li>
+          <li class="validator-senha" [ngClass]="{'info': !isPasswordValid(2), 'check': isPasswordValid(2)}">
+            <span class="icon">
+              <i class="fa" [ngClass]="isPasswordValid(2) ? 'fa-check' : 'fa-info'"></i>
+            </span>Contenha ao menos um número
+          </li>
+          <li class="validator-senha" [ngClass]="{'info': !isPasswordValid(3), 'check': isPasswordValid(3)}">
+            <span class="icon">
+              <i class="fa" [ngClass]="isPasswordValid(3) ? 'fa-check' : 'fa-info'"></i>
+            </span>Contenha ao menos um caractere especial
+          </li>
+          <li class="validator-senha" [ngClass]="{'info': !isPasswordValid(4), 'check': isPasswordValid(4)}">
+            <span class="icon">
+              <i class="fa" [ngClass]="isPasswordValid(4) ? 'fa-check' : 'fa-info'"></i>
+            </span>Contenha ao menos uma letra maiúscula
+          </li>
+        </ul>
+
+
+        <div class="form-group">
+          <div class="password-container input-container">
+            <span class="icon"><i class="fa fa-lock"></i></span>
+            <input [type]="passwordFieldType" id="repetirSenha" formControlName="repetirSenha"
+              placeholder="Repita sua senha">
+            <span class="password-toggle" (click)="togglePasswordVisibility()">
+              <i class="fa" [ngClass]="passwordIconClass"></i>
+            </span>
+          </div>
+        </div>
+
+        <button type="submit">Registrar-se</button>
+      </form>
+      <p id="termos">Ao criar uma conta, você concorda com as <a href="#">Condições de Uso</a> da nossa plataforma</p>
+    </div>
+  </div>
+</div>

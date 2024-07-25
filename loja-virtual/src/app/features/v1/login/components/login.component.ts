@@ -135,7 +135,6 @@ export class LoginComponent implements OnInit {
   }
   
   private mensagemErro(mensagem: string = 'Ocorreu um erro inesperado.') {
-    console.log('Exibindo mensagem de erro:', mensagem);
     this.snackBar.open(mensagem, '', { duration: 5000 });
   }
 

@@ -14,11 +14,13 @@ import { ForbidenComponent } from './features/v1/forbiden/components/forbiden.co
 import { HomeComponent } from './features/v1/home/components/home.component';
 import { HomeModule } from './features/v1/home/home.module';
 import { CloudSvgComponent } from './features/v1/svg/cloud-svg/cloud-svg.component';
+import { RegistroComponent } from './features/v1/registro/components/registro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ForbidenComponent
+    ForbidenComponent,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

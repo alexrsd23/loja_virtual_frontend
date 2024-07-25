@@ -6,6 +6,7 @@ import { AutenticacaoGuard } from './core/guards/autenticacao.guard';
 import { HomeComponent } from './features/v1/home/components/home.component';
 import { ForbidenComponent } from './features/v1/forbiden/components/forbiden.component';
 import { CustomReuseStrategy } from './shared/CustomReuseStrategy';
+import { RegistroComponent } from './features/v1/registro/components/registro.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'forbidden',
     component: ForbidenComponent,
+  },
+  {
+    path: 'registrar',
+    component: RegistroComponent,
   }
 ];
 

@@ -15,7 +15,7 @@ export class LoginService {
   login(loginData: any) {
     return this.http.post(api, loginData, { headers: this.requestHeader });
   }
-
+  
   public setRoles(roles: []) {
     localStorage.setItem('roles', JSON.stringify(roles));
   }
