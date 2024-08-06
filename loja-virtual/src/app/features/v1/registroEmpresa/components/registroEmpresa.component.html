@@ -1,0 +1,102 @@
+<div class="register-page">
+  <div class="registro-container">
+    <h2>Criar uma conta de Pessoa Jurídica!</h2>
+    <p>Insira as informações da empresa para começar</p>
+    <form (ngSubmit)="registrar()" [formGroup]="registroEmpresaForm">
+      <!-- Dados da Empresa -->
+      <div class="form-group">
+        <label for="cnpj">CNPJ:</label>
+        <input type="text" id="cnpj" formControlName="cnpj" required placeholder="CNPJ">
+      </div>
+      
+      <div class="form-group">
+        <label for="inscricaoEstadual">Inscrição Estadual:</label>
+        <input type="text" id="inscricaoEstadual" formControlName="inscricaoEstadual" placeholder="Inscrição Estadual">
+      </div>
+
+      <div class="form-group">
+        <label for="inscricaoMunicipal">Inscrição Municipal:</label>
+        <input type="text" id="inscricaoMunicipal" formControlName="inscricaoMunicipal" placeholder="Inscrição Municipal">
+      </div>
+
+      <div class="form-group">
+        <label for="nomeFantasia">Nome Fantasia:</label>
+        <input type="text" id="nomeFantasia" formControlName="nomeFantasia" required placeholder="Nome Fantasia">
+      </div>
+
+      <div class="form-group">
+        <label for="razaoSocial">Razão Social:</label>
+        <input type="text" id="razaoSocial" formControlName="razaoSocial" required placeholder="Razão Social">
+      </div>
+
+      <div class="form-group">
+        <label for="categoria">Categoria:</label>
+        <input type="text" id="categoria" formControlName="categoria" required placeholder="Categoria">
+      </div>
+
+      <!-- Dados de Contato -->
+      <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" formControlName="nome" required placeholder="Nome do Contato">
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" formControlName="email" required placeholder="E-mail">
+      </div>
+
+      <div class="form-group">
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" formControlName="telefone" required placeholder="Telefone">
+      </div>
+
+      <div class="form-group">
+        <label for="tipoPessoa">Tipo de Pessoa:</label>
+        <input type="text" id="tipoPessoa" formControlName="tipoPessoa" required placeholder="Tipo de Pessoa">
+      </div>
+
+      <!-- Endereço -->
+      <div class="form-group">
+        <label for="ruaLogradouro">Rua/Logradouro:</label>
+        <input type="text" id="ruaLogradouro" formControlName="ruaLogradouro" required placeholder="Rua/Logradouro">
+      </div>
+
+      <div class="form-group">
+        <label for="cep">CEP:</label>
+        <input type="text" id="cep" formControlName="cep" required placeholder="CEP">
+      </div>
+
+      <div class="form-group">
+        <label for="numero">Número:</label>
+        <input type="text" id="numero" formControlName="numero" required placeholder="Número">
+      </div>
+
+      <div class="form-group">
+        <label for="complemento">Complemento:</label>
+        <input type="text" id="complemento" formControlName="complemento" placeholder="Complemento">
+      </div>
+
+      <div class="form-group">
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" formControlName="bairro" required placeholder="Bairro">
+      </div>
+
+      <div class="form-group">
+        <label for="uf">UF:</label>
+        <input type="text" id="uf" formControlName="uf" required placeholder="UF">
+      </div>
+
+      <div class="form-group">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" formControlName="cidade" required placeholder="Cidade">
+      </div>
+
+      <div class="form-group">
+        <label for="tipoEndereco">Tipo de Endereço:</label>
+        <input type="text" id="tipoEndereco" formControlName="tipoEndereco" required placeholder="Tipo de Endereço">
+      </div>
+
+      <button type="submit">Registrar Empresa</button>
+    </form>
+  </div>
+</div>

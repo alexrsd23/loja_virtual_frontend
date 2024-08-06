@@ -7,6 +7,7 @@ import { HomeComponent } from './features/v1/home/components/home.component';
 import { ForbidenComponent } from './features/v1/forbiden/components/forbiden.component';
 import { CustomReuseStrategy } from './shared/CustomReuseStrategy';
 import { RegistroComponent } from './features/v1/registro/components/registro.component';
+import { RegistroEmpresaComponent } from './features/v1/registroEmpresa/components/registroEmpresa.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,12 @@ const routes: Routes = [
   {
     path: 'registrar',
     component: RegistroComponent,
+  },
+  {
+    path: 'registrarempresa',
+    component: RegistroEmpresaComponent,
+    canActivate: [AutenticacaoGuard],
+    data: { roles: ['ROLE_ADMIN'] },
   }
 ];
 
