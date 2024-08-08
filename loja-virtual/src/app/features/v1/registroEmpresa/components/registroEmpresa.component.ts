@@ -31,7 +31,7 @@ export class RegistroEmpresaComponent implements OnInit {
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       telefone: ['', Validators.required],
-      tipoPessoa: ['', Validators.required],
+      tipoPessoa: [{ value: 'PJ', disabled: true }, Validators.required],
       ruaLogradouro: ['', Validators.required],
       cep: ['', Validators.required],
       numero: ['', Validators.required],
